@@ -21,7 +21,7 @@ const Header = () => {
 		<header className="p-6 mt-12">
 			<nav className="flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start">
 				<Link to="/">
-					<h1 className="font-nimbus-bold text-xl">AGOTH AROP</h1>
+					<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100">AGOTH AROP</h1>
 				</Link>
 
 				{/* NAV LINKS */}
@@ -29,7 +29,7 @@ const Header = () => {
 					{navLinks.map((link) => (
 						<li key={link.id}>
 							<Link
-								className="text-zinc-300 hover:text-teal-500 flex flex-col items-center"
+								className="dark:text-zinc-300 hover:text-teal-500 flex flex-col items-center"
 								to={link.path}
 							>
 								<p className="text-sm">{link.linkName}</p>

@@ -1,4 +1,8 @@
 @import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 @font-face {
 	font-family: "Nimbus Bold";
 	src: url("../assets/fonts/nimbus-sans-l/NimbusSanL-Bol.otf")
@@ -7,7 +11,6 @@
 	font-style: normal;
 	font-display: swap;
 }
-
 @font-face {
 	font-family: "Nimbus Sans";
 	src: url("../assets/fonts/nimbus-sans-l/NimbusSanL-Reg.otf")
@@ -17,11 +20,25 @@
 	font-display: swap;
 }
 
-html {
-	@apply dark:text-zinc-50;
+html, body {
+	@apply text-zinc-800 dark:text-zinc-50; 
 }
 
 @theme {
 	--font-nimbus-bold: "Nimbus Bold", system-ui;
 	--font-nimbus: "Nimbus Sans", system-ui;
+	--font-space-grotesk: "Space Grotesk", sans-serif;
+	--font-space-mono: "Space Mono", monospace;
+	--font-pt-serif: "PT Serif", sans-serif;
+	--animate-blink: blink 1250ms step-start infinite;
+}
+
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
 }
