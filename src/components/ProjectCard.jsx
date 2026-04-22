@@ -18,7 +18,7 @@ const CardCTAButton = ({ text, URL, icon }) => {
 
 const ProjectCard = ({ project }) => {
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 p-4 rounded-lg gap-6 bg-zinc-100 dark:bg-olive-950">
+		<div className="grid grid-cols-1 sm:grid-cols-2 p-4 rounded-lg gap-6 bg-zinc-100 dark:bg-zinc-900">
 			<img
 				src={project.imageSrc}
 				alt={project.title}

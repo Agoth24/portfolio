@@ -57,3 +57,5 @@ html, body {
 		opacity: 0;
 	}
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
