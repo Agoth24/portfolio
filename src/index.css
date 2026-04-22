@@ -31,14 +31,21 @@ body {
 	--font-space-grotesk: "Space Grotesk", sans-serif;
 	--font-space-mono: "Space Mono", monospace;
 	--font-pt-serif: "PT Serif", sans-serif;
-	--animate-blink: blink 1250ms step-start infinite;
 }
+
+.animate-scroll {
+    animation: scroll 15s linear infinite;
+}
+.animate-blink {
+    animation: blink 1250ms step-start infinite;
+}
+
 @keyframes scroll {
 	from {
 		transform: translateX(0);
 	}
 	to {
-		transform: translateX(-50%);
+		transform: translateX(-33.3%);
 	}
 }
 

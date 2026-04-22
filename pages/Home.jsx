@@ -1,8 +1,8 @@
-import logos from "../src/logos";
+import LogoBar from "../src/components/LogoBar";
 
 const Home = () => {
 	return (
-		<section className="flex flex-col gap-8">
+		<section className="flex flex-col gap-8 overflow-hidden">
 			<div className="flex flex-col gap-4 dark:text-zinc-200 font-space-mono mt-8">
 				<p>
 					&gt; Hey there! I'm Agoth, a Software Engineer and Computer
@@ -16,12 +16,7 @@ const Home = () => {
 					</p>
 				</div>
 			</div>
-            <div className="flex items-center justify-between">
-                {logos.map((logo) => (
-                    <img className="h-10 w-auto" src={logo.src} alt={logo.name} />
-                ))}
-            </div>
-
+            <LogoBar />
 		</section>
 	);
 };
