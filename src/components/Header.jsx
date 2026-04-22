@@ -15,7 +15,7 @@ const Title = ({ text }) => {
 
 const Header = () => {
 	return (
-		<header className="p-6 mt-12">
+		<header className="px-6 mt-16">
 			<nav className="flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start">
 				<Link to="/">
 					<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-500 transition-all duration-150 ease-in-out">
@@ -38,22 +38,7 @@ const Header = () => {
 					))}
 				</ul>
 			</nav>
-			<div className="flex gap-4 [&>a]:hover:text-indigo-500 [&>a]:transition-all [&>a]:duration-150 [&>a]:ease-in-out">
-				<a
-					href="https://www.linkedin.com/in/agoth-arop-9b19203a3/"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<FaLinkedin size={25} />
-				</a>
-				<a
-					href="https://github.com/agoth24"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<FaGithub size={25} />
-				</a>
-			</div>
+			
 		</header>
 	);
 };
