@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import LogoBar from "../src/components/LogoBar";
 
 const CTAButton = ({ text }) => {
 	return (
@@ -9,7 +10,12 @@ const CTAButton = ({ text }) => {
 };
 
 const ColouredText = ({ text }) => {
-	return <span className="text-teal-500 dark:text-teal-400 whitespace-normal"> {text} </span>;
+	return (
+		<span className="text-teal-500 dark:text-teal-400 whitespace-normal">
+			{" "}
+			{text}{" "}
+		</span>
+	);
 };
 
 const Home = () => {
@@ -17,14 +23,15 @@ const Home = () => {
 		<section className="max-sm:px-6 mt-8 flex flex-col gap-4 sm:items-center">
 			<div className="p-6 rounded-lg bg-zinc-200 dark:bg-zinc-950 flex flex-col gap-4 dark:text-zinc-200 font-space-mono">
 				<p>
-					&gt; Hey there! I'm Agoth, a <ColouredText text="Software Engineer" /> and
+					&gt; Hey there! I'm Agoth, a{" "}
+					<ColouredText text="Software Engineer" /> and
 					<ColouredText text="Computer Science Undergraduate" /> at
 					the University of Alberta.
 				</p>
 				<div>
 					<p>
-						&gt; Currently, I'm focused on building robust
-						backend systems with Node.js and Express&nbsp;
+						&gt; Currently, I'm focused on building robust backend
+						systems with Node.js and Express&nbsp;
 						<span className="inline-block w-2 h-4 bg-current animate-blink -mb-px" />
 					</p>
 				</div>
@@ -37,6 +44,8 @@ const Home = () => {
 					<CTAButton text="Blog" />
 				</Link>
 			</div>
+
+			<LogoBar/>
 		</section>
 	);
 };

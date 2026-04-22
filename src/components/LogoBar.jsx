@@ -11,7 +11,7 @@ const Logo = ({ logo }) => {
 const LogoBar = () => {
 	return (
 		<div
-			className="overflow-hidden w-full"
+			className="mt-8 overflow-hidden w-full"
 			style={{
 				maskImage:
 					"linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
