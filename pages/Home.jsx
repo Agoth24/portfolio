@@ -44,8 +44,8 @@ const Home = () => {
 					<CTAButton text="Blog" />
 				</Link>
 			</div>
-
-			<LogoBar/>
+			<LogoBar />
+            
 		</section>
 	);
 };

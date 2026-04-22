@@ -19,7 +19,7 @@ const LogoBar = () => {
 					"linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
 			}}
 		>
-			<div className="flex items-center animate-scroll hover:[animation-play-state:paused] w-max">
+			<div className="flex items-center animate-scroll w-max">
 				{[...logos, ...logos, ...logos].map((logo, i) => (
 					<Logo key={i} logo={logo} />
 				))}
