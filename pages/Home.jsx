@@ -29,7 +29,7 @@ const Home = () => {
 					</p>
 				</div>
 			</div>
-			<div className="grid grid-cols-2 gap-4  text-lg ">
+			<div className="grid grid-cols-2 justify-items-center gap-4 text-lg ">
 				<Link to="/projects">
 					<CTAButton text="Projects" />
 				</Link>

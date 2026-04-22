@@ -16,6 +16,12 @@ const navLinks = [
 // 	);
 // };
 
+const Title = ({ text }) => {
+	<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-500 transition-all duration-150 ease-in-out">
+		{text}
+	</h1>;
+};
+
 const Header = () => {
 	return (
 		<header className="p-6 mt-12">
