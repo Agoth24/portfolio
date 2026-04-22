@@ -21,7 +21,7 @@
 }
 
 html, body {
-	@apply text-zinc-800 dark:text-zinc-50; 
+	@apply text-zinc-800 dark:text-zinc-50 selection:bg-violet-400 dark:selection:violet-500; 
 }
 
 @theme {
