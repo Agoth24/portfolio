@@ -1,1 +1,27 @@
 @import "tailwindcss";
+@font-face {
+	font-family: "Nimbus Bold";
+	src: url("../assets/fonts/nimbus-sans-l/NimbusSanL-Bol.otf")
+		format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Nimbus Sans";
+	src: url("../assets/fonts/nimbus-sans-l/NimbusSanL-Reg.otf")
+		format("opentype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+html {
+	@apply dark:text-zinc-50;
+}
+
+@theme {
+	--font-nimbus-bold: "Nimbus Bold", system-ui;
+	--font-nimbus: "Nimbus Sans", system-ui;
+}

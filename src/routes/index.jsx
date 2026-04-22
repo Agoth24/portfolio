@@ -1,11 +1,12 @@
-import RootLayout from "../layouts/RootLayout"
+import Home from "../../pages/Home";
+import RootLayout from "../layouts/RootLayout";
 import { createBrowserRouter } from "react-router";
 
 const routes = [
 	{
 		path: "/",
 		element: <RootLayout />,
-		children: [],
+		children: [{ index: true, element: <Home /> }],
 	},
 ];
 
