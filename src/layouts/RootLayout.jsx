@@ -4,10 +4,12 @@ import Header from "../components/Header";
 const RootLayout = () => {
 	return (
 		<div className="min-h-screen dark:bg-zinc-800">
-			<main className="md:max-w-4xl mx-auto">
+			<div className="flex flex-col md:max-w-3xl mx-auto">
 				<Header />
-				<Outlet />
-			</main>
+				<main className="px-6 flex-1">
+					<Outlet />
+				</main>
+			</div>
 		</div>
 	);
 };

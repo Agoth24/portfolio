@@ -2,8 +2,8 @@ import { Link } from "react-router";
 import { Dot, Menu } from "lucide-react";
 
 const navLinks = [
-	{ id: 0, linkName: "Projects", path: "/projects", selected: true },
-	{ id: 1, linkName: "Writing", path: "/blog", selected: true },
+	{ id: 0, linkName: "Projects", path: "/projects", selected: false },
+	{ id: 1, linkName: "Writing", path: "/blog", selected: false },
 	// { id: 2, linkName: "Connect", path: "/", selected: true },
 ];
 
@@ -17,16 +17,15 @@ const navLinks = [
 // };
 
 const Header = () => {
-
 	return (
-		<header className="p-6 sm:py-8">
-			<nav className="flex justify-between items-start">
+		<header className="p-6 mt-12">
+			<nav className="flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start">
 				<Link to="/">
 					<h1 className="font-nimbus-bold text-xl">AGOTH AROP</h1>
 				</Link>
 
 				{/* NAV LINKS */}
-				<ul className="flex gap-8">
+				<ul className="flex max-[350px]:gap-4 gap-8">
 					{navLinks.map((link) => (
 						<li key={link.id}>
 							<Link
