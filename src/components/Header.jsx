@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Dot } from "lucide-react";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
@@ -14,15 +14,59 @@ const Title = ({ text }) => {
 	</h1>;
 };
 const DarkModeToggle = () => {
-	const [dark, setDark] = useState(false);
+	const [dark, setDark] = useState(() => {
+		if (typeof window === "undefined") return false;
+		const stored = localStorage.getItem("theme");
+		if (stored === "dark") return true;
+		if (stored === "light") return false;
+		return (
+			window.matchMedia &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches
+		);
+	});
+
+	useEffect(() => {
+        document.documentElement.classList.toggle("dark", dark);
+        try {
+            localStorage.setItem("theme", dark ? "dark" : "light");
+        } catch {
+            // 
+        }
+    }, [dark]);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        if (localStorage.getItem("theme")) return;
+
+        const mq = window.matchMedia("(prefers-color-scheme: dark)");
+        const handler = (e) => setDark(e.matches);
+
+        if (mq.addEventListener) mq.addEventListener("change", handler);
+        else mq.addListener(handler);
+
+        return () => {
+            if (mq.removeEventListener) mq.removeEventListener("change", handler);
+            else mq.removeListener(handler);
+        };
+    }, [])
 
 	const handleToggle = () => {
-		document.documentElement.classList.toggle("dark");
-		setDark(!dark);
+        setDark((prev) => {
+            const next = !prev;
+            try {
+                localStorage.getItem("theme", next ? "dark" : "light");
+            } catch {
+                //
+            }
+            return next;
+        })
 	};
 
 	return (
-		<button onClick={handleToggle} className="cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 p-2 rounded-lg">
+		<button
+			onClick={handleToggle}
+			className="cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 p-2 rounded-lg"
+		>
 			{!dark ? (
 				<IoMoonOutline size={20} className="text-teal-500" />
 			) : (
