@@ -65,7 +65,7 @@ const DarkModeToggle = () => {
 	return (
 		<button
 			onClick={handleToggle}
-			className="cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 p-2 rounded-lg"
+			className="cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg flex items-start sm:items-center sm:p-2"
 		>
 			{!dark ? (
 				<IoMoonOutline size={20} className="text-teal-500" />
@@ -86,7 +86,7 @@ const Header = () => {
 					</h1>
 				</Link>
 
-				<div className="flex gap-4">
+				<div className="flex gap-2 sm:gap-8">
 					{/* DARK MODE SWITCH */}
 					<DarkModeToggle />
 					{/* NAV LINKS */}
