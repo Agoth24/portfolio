@@ -1,110 +1,119 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Dot } from "lucide-react";
-import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const navLinks = [
 	{ id: 0, linkName: "Projects", path: "/projects", selected: false },
 	{ id: 1, linkName: "Writing", path: "/blog", selected: false },
 ];
 
-const Title = ({ text }) => {
-	<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-500 transition-all duration-150 ease-in-out">
-		{text}
-	</h1>;
-};
-const DarkModeToggle = () => {
-	const [dark, setDark] = useState(() => {
-		if (typeof window === "undefined") return false;
-		const stored = localStorage.getItem("theme");
-		if (stored === "dark") return true;
-		if (stored === "light") return false;
-		return (
-			window.matchMedia &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches
-		);
-	});
-
-	useEffect(() => {
-        document.documentElement.classList.toggle("dark", dark);
-        try {
-            localStorage.setItem("theme", dark ? "dark" : "light");
-        } catch {
-            // 
-        }
-    }, [dark]);
-
-    useEffect(() => {
-        if (typeof window === "undefined") return;
-        if (localStorage.getItem("theme")) return;
-
-        const mq = window.matchMedia("(prefers-color-scheme: dark)");
-        const handler = (e) => setDark(e.matches);
-
-        if (mq.addEventListener) mq.addEventListener("change", handler);
-        else mq.addListener(handler);
-
-        return () => {
-            if (mq.removeEventListener) mq.removeEventListener("change", handler);
-            else mq.removeListener(handler);
-        };
-    }, [])
-
-	const handleToggle = () => {
-        setDark((prev) => {
-            const next = !prev;
-            try {
-                localStorage.getItem("theme", next ? "dark" : "light");
-            } catch {
-                //
-            }
-            return next;
-        })
-	};
-
-	return (
-		<button
-			onClick={handleToggle}
-			className="cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg flex items-start sm:items-center sm:p-2"
-		>
-			{!dark ? (
-				<IoMoonOutline size={20} className="text-teal-500" />
-			) : (
-				<IoSunnyOutline size={20} className="text-violet-400" />
-			)}
-		</button>
-	);
-};
-
 const Header = () => {
+	const [menuOpen, setMenuOpen] = useState(false);
+
 	return (
-		<header className="px-6 mt-16">
+		<header className="px-6 mt-12">
 			<nav className="flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start">
-				<Link to="/">
-					<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-500 transition-all duration-150 ease-in-out">
+				{/* TITLE */}
+				<Link to="/" className="flex items-center">
+					<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-700 transition-all duration-150 ease-in-out">
 						AGOTH AROP
 					</h1>
 				</Link>
 
-				<div className="flex gap-2 sm:gap-8">
-					{/* DARK MODE SWITCH */}
-					<DarkModeToggle />
+				<button
+					type="button"
+					className="sm:hidden cursor-pointer hover:text-teal-700 transition-all duration-150 ease-in-out"
+					aria-label="Toggle menu"
+					aria-expanded={menuOpen}
+					aria-controls="mobile-menu"
+					onClick={() => setMenuOpen((prev) => !prev)}
+				>
+					{menuOpen ? <X size={24} /> : <Menu size={24} />}
+				</button>
+
+				<div className="hidden sm:flex max-sm:flex-col items-center gap-4">
 					{/* NAV LINKS */}
-					<ul className="flex max-[350px]:gap-4 gap-8">
-						{navLinks.map((link) => (
-							<li key={link.id}>
-								<Link
-									className="dark:text-teal-500 hover:text-teal-700 flex flex-col items-center transition-all duration-150 ease-in-out"
-									to={link.path}
-								>
-									<p className="text-sm">{link.linkName}</p>
-									<Dot className="-mt-1.5" />
-								</Link>
-							</li>
-						))}
-					</ul>
+					<div className="flex gap-2 sm:gap-8">
+						<ul className="flex max-[350px]:gap-4 gap-6 ">
+							{navLinks.map((link) => (
+								<li key={link.id}>
+									<Link
+										className="dark:text-zinc-100 hover:text-teal-700 flex flex-col items-center transition-all duration-150 ease-in-out"
+										to={link.path}
+									>
+										<p className="text-md">
+											{link.linkName}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</div>
+
+					{/* SOCIAL ICONS */}
+					<div className="flex sm:ml-6 gap-4 [&>a]:hover:text-teal-700 [&>a]:transition-all [&>a]:duration-150 [&>a]:ease-in-out">
+						<a
+							href="https://www.linkedin.com/in/agoth-arop-9b19203a3/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<FaLinkedin size={20} />
+						</a>
+						<a
+							href="https://github.com/agoth24"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<FaGithub size={20} />
+						</a>
+					</div>
 				</div>
 			</nav>
+
+			{menuOpen && (
+				<div
+					id="mobile-menu"
+					className="sm:hidden fixed inset-x-0 top-32 bottom-0 z-50 bg-zinc-50 dark:bg-neutral-800 px-6 py-8"
+				>
+					<div className="flex h-full flex-col items-center gap-8">
+						<ul className="flex flex-col items-center gap-6">
+							{navLinks.map((link) => (
+								<li key={link.id}>
+									<Link
+										className="dark:text-zinc-100 hover:text-teal-700 flex flex-col items-center transition-all duration-150 ease-in-out"
+										to={link.path}
+										onClick={() => setMenuOpen(false)}
+									>
+										<p className="text-md">
+											{link.linkName}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+
+						<div className="flex gap-4 [&>a]:hover:text-teal-700 [&>a]:transition-all [&>a]:duration-150 [&>a]:ease-in-out">
+							<a
+								href="https://www.linkedin.com/in/agoth-arop-9b19203a3/"
+								target="_blank"
+								rel="noopener noreferrer"
+								onClick={() => setMenuOpen(false)}
+							>
+								<FaLinkedin size={20} />
+							</a>
+							<a
+								href="https://github.com/agoth24"
+								target="_blank"
+								rel="noopener noreferrer"
+								onClick={() => setMenuOpen(false)}
+							>
+								<FaGithub size={20} />
+							</a>
+						</div>
+					</div>
+				</div>
+			)}
 		</header>
 	);
 };
