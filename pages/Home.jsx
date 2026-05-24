@@ -21,12 +21,18 @@ const ColouredText = ({ text }) => {
 
 const Home = () => {
 	return (
-		<section className="max-sm:px-6 flex flex-col gap-4">
-
-			<div className="flex flex-col gap-4 sm:items-center">
-
-            </div>
-			{/* <LogoBar /> */}
+		<section className="flex flex-col gap-4 py-12">
+			<div className="flex flex-col font-noto-serif text-md gap-4">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Ipsam, dolorum!
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab
+					dolores magnam ipsam nostrum harum mollitia blanditiis earum
+					repellendus?
+				</p>
+			</div>
 		</section>
 	);
 };

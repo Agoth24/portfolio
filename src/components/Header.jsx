@@ -12,7 +12,7 @@ const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	return (
-		<header className="px-6 mt-12">
+		<header className="mt-12">
 			<nav className="flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start">
 				{/* TITLE */}
 				<Link to="/" className="flex items-center">
