@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
 	{ id: 0, linkName: "Projects", path: "/projects", selected: false },
@@ -11,9 +11,36 @@ const navLinks = [
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
+	useEffect(() => {
+		const bodyOverflow = document.body.style.overflow;
+		const htmlOverflow = document.documentElement.style.overflow;
+
+		if (menuOpen) {
+			document.body.style.overflow = "hidden";
+			document.documentElement.style.overflow = "hidden";
+		}
+
+		return () => {
+			document.body.style.overflow = bodyOverflow;
+			document.documentElement.style.overflow = htmlOverflow;
+		};
+	}, [menuOpen]);
+
 	return (
-		<header className="mt-12">
-			<nav className="flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start">
+		<header
+			className={
+				menuOpen
+					? "fixed inset-x-0 top-0 z-50 h-20 max-[350px]:h-[7.5rem] bg-white pt-12 dark:bg-neutral-900"
+					: "mt-12"
+			}
+		>
+			<nav
+				className={
+					menuOpen
+						? "mx-auto flex w-full max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start px-6 md:max-w-3xl"
+						: "flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start"
+				}
+			>
 				{/* TITLE */}
 				<Link to="/" className="flex items-center">
 					<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-700 transition-all duration-150 ease-in-out">
@@ -74,9 +101,9 @@ const Header = () => {
 			{menuOpen && (
 				<div
 					id="mobile-menu"
-					className="sm:hidden fixed inset-x-0 top-32 bottom-0 z-50 bg-zinc-50 dark:bg-neutral-800 px-6"
+					className="sm:hidden fixed inset-x-0 top-20 max-[350px]:top-30 bottom-0 overflow-y-auto bg-zinc-50 dark:bg-neutral-900 px-6"
 				>
-					<div className="flex h-full flex-col gap-8">
+					<div className="flex h-full flex-col gap-8 py-8">
 						<ul className="flex flex-col gap-6">
 							{navLinks.map((link) => (
 								<li key={link.id}>
