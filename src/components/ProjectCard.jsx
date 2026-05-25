@@ -2,7 +2,7 @@ import { FaDisplay } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 
 const Tag = ({ text }) => {
-	return <p className="px-2 text-xs rounded-xl bg-violet-400 dark:bg-violet-600">{text}</p>;
+	return <p className="px-2 text-xs rounded-xl ">{text}</p>;
 };
 
 const CardCTAButton = ({ text, URL, icon }) => {

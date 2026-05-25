@@ -34,7 +34,7 @@ const projects = [
 const Projects = () => {
 	return (
 		<section className="max-sm:px-6 mt-12 flex flex-col gap-4">
-			<h1 className="text-xl font-space-grotesk font-medium">
+			<h1 className="text-xl font-noto-serif font-medium">
 				Some of My Projects
 			</h1>
 			<div className="grid grid-cols-1 gap-8">

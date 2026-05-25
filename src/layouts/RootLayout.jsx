@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 const RootLayout = () => {
 	return (
-			<div className="px-6 flex flex-col md:max-w-3xl mx-auto sm:mt-20">
+			<div className="px-6 flex flex-col md:max-w-3xl mx-auto ">
 				<Header />
 				<main className="grow">
 					<Outlet />

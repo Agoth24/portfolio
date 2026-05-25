@@ -74,14 +74,14 @@ const Header = () => {
 			{menuOpen && (
 				<div
 					id="mobile-menu"
-					className="sm:hidden fixed inset-x-0 top-32 bottom-0 z-50 bg-zinc-50 dark:bg-neutral-800 px-6 py-8"
+					className="sm:hidden fixed inset-x-0 top-32 bottom-0 z-50 bg-zinc-50 dark:bg-neutral-800 px-6"
 				>
-					<div className="flex h-full flex-col items-center gap-8">
-						<ul className="flex flex-col items-center gap-6">
+					<div className="flex h-full flex-col gap-8">
+						<ul className="flex flex-col gap-6">
 							{navLinks.map((link) => (
 								<li key={link.id}>
 									<Link
-										className="dark:text-zinc-100 hover:text-teal-700 flex flex-col items-center transition-all duration-150 ease-in-out"
+										className="dark:text-zinc-100 hover:text-teal-700 flex flex-col transition-all duration-150 ease-in-out"
 										to={link.path}
 										onClick={() => setMenuOpen(false)}
 									>
