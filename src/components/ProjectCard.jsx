@@ -5,7 +5,7 @@ const ProjectCard = ({ project }) => {
 	const linkLabel = project.liveUrl ? "View it Live" : "View Repo";
 
 	return (
-		<div className="border border-border bg-surface shadow-md dark:shadow-lg p-4 rounded-md font-geist">
+		<div className="py-3 font-geist">
 			<div className="flex justify-between">
 				<a href={url} target="_blank" rel="noopener noreferrer">
 					<h3 className="text-lg">{project.title}</h3>

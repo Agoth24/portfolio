@@ -4,7 +4,7 @@ import posts from "../src/data/posts";
 const Blog = () => {
 	return (
 		<section className="flex flex-col gap-4">
-			<h1 className="text-xl font-heading">
+			<h1 className="text-2xl">
 				Some Throwaway Thoughts
 			</h1>
 			{posts.length > 0 ? (

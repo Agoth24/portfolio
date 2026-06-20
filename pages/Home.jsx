@@ -11,15 +11,16 @@ const latestPosts = [...posts]
 
 const Home = () => {
 	return (
-		<div className="flex flex-col gap-12 font-light">
-			<p className="text-4xl sm:text-4xl leading-tight">
-				I'm a <strong className="text-accent">software engineer</strong> and
-				CS & Economics undergrad at the University of Alberta.
+		<div className="flex flex-col gap-8 font-light">
+			<p className="text-4xl sm:text-4xl leading-tight mb-4 sm:mb-8p">
+				I'm a <strong className="text-accent">software engineer</strong>{" "}
+				and <span className="underline  underline-offset-3 decoration-3 decoration-accent"> CS & Economics </span>{" "}
+				undergrad at the University of Alberta.
 			</p>
 
 			<section className="flex flex-col gap-4">
-				<SectionHeader title="Projects" to="/projects" />
-				<div className="grid grid-cols-1 gap-4">
+				<SectionHeader title="What I'm working on" to="/projects" />
+				<div className="flex flex-col">
 					{featuredProjects.map((project) => (
 						<ProjectCard project={project} key={project.id} />
 					))}
