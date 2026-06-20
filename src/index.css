@@ -22,8 +22,11 @@
 }
 
 html, body {
-	@apply text-zinc-800 dark:text-zinc-50  bg-white dark:bg-neutral-800; 
+	@apply text-zinc-800 dark:text-zinc-50 bg-white dark:bg-zinc-950;
 }
+
+/* radius convention: rounded-lg for containers/cards/images, rounded-full for pills */
+/* accent convention: text/hover -> text-teal-700 dark:text-teal-400, borders -> border-teal-700 dark:border-teal-400 */
 
 @theme {
 	--font-nimbus-bold: "Nimbus Bold", system-ui;
@@ -32,7 +35,7 @@ html, body {
 	--font-space-mono: "Space Mono", monospace;
 	--font-pt-serif: "PT Serif", sans-serif;
     --font-DM-Sans: "DM Sans", sans-serif;
-    --font-noto-serif: "Noto Serif"
+    --font-noto-serif: "Noto Serif", serif;
 }
 
 .animate-scroll {
