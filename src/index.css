@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @font-face {
@@ -21,28 +19,57 @@
 	font-display: swap;
 }
 
-html, body {
-	@apply text-zinc-800 dark:text-zinc-50 bg-white dark:bg-zinc-950;
+:root {
+	--bg: #ffffff; /* white    */
+	--surface: #f4f4f5; /* zinc-100 */
+	--border: #e4e4e7; /* zinc-200 */
+	--fg: #27272a; /* zinc-800 */
+	--muted: #71717a; /* zinc-500 */
+	--accent: #0f766e; /* teal-700 */
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #09090b; /* zinc-950 */
+		--surface: #18181b; /* zinc-900 */
+		--border: #27272a; /* zinc-800 */
+		--fg: #fafafa; /* zinc-50  */
+		--muted: #a1a1aa; /* zinc-400 */
+		--accent: #2dd4bf; /* teal-400 */
+	}
+}
+
+@theme inline {
+	--color-bg: var(--bg);
+	--color-surface: var(--surface);
+	--color-border: var(--border);
+	--color-fg: var(--fg);
+	--color-muted: var(--muted);
+	--color-accent: var(--accent);
+
+	--font-heading: "Nimbus Bold", system-ui;
+	--font-body: "Noto Serif", serif;
+	--font-geist: "Geist", system-ui, sans-serif;
+}
+
+html,
+body {
+	@apply bg-bg text-fg font-body selection:bg-fg selection:text-bg;
 }
 
 /* radius convention: rounded-lg for containers/cards/images, rounded-full for pills */
-/* accent convention: text/hover -> text-teal-700 dark:text-teal-400, borders -> border-teal-700 dark:border-teal-400 */
 
-@theme {
-	--font-nimbus-bold: "Nimbus Bold", system-ui;
-	--font-nimbus: "Nimbus Sans", system-ui;
-	--font-space-grotesk: "Space Grotesk", sans-serif;
-	--font-space-mono: "Space Mono", monospace;
-	--font-pt-serif: "PT Serif", sans-serif;
-    --font-DM-Sans: "DM Sans", sans-serif;
-    --font-noto-serif: "Noto Serif", serif;
+@layer components {
+	/* shared interactive text: nav links, wordmark, social icons, etc. */
+	.link {
+		@apply text-fg transition-colors duration-150 ease-in-out hover:text-accent;
+	}
 }
 
 .animate-scroll {
-    animation: scroll 15s linear infinite;
+	animation: scroll 15s linear infinite;
 }
 .animate-blink {
-    animation: blink 1250ms step-start infinite;
+	animation: blink 1250ms step-start infinite;
 }
 
 @keyframes scroll {
