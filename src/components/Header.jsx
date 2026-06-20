@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { cn } from "../lib/cn";
 
 const navLinks = [
 	{ id: 0, linkName: "Projects", path: "/projects", selected: false },
@@ -28,29 +29,29 @@ const Header = () => {
 
 	return (
 		<header
-			className={
+			className={cn(
+				"z-50",
 				menuOpen
-					? "fixed inset-x-0 top-0 z-50 h-20 max-[350px]:h-[7.5rem] bg-white pt-12 dark:bg-neutral-900"
-					: "mt-12"
-			}
+					? "fixed inset-x-0 top-0 h-20 bg-bg pt-12"
+					: "mt-12",
+			)}
 		>
 			<nav
-				className={
-					menuOpen
-						? "mx-auto flex w-full max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start px-6 md:max-w-3xl"
-						: "flex max-[350px]:flex-col max-[350px]:gap-4 justify-between items-start"
-				}
+				className={cn(
+					"flex justify-between items-start",
+					menuOpen && "mx-auto w-full md:max-w-3xl px-6",
+				)}
 			>
 				{/* TITLE */}
 				<Link to="/" className="flex items-center">
-					<h1 className="font-nimbus-bold text-2xl dark:text-zinc-100 hover:text-teal-700 transition-all duration-150 ease-in-out">
+					<h1 className="link font-heading text-xl sm:text-2xl">
 						AGOTH AROP
 					</h1>
 				</Link>
 
 				<button
 					type="button"
-					className="sm:hidden cursor-pointer hover:text-teal-700 transition-all duration-150 ease-in-out"
+					className="link sm:hidden cursor-pointer"
 					aria-label="Toggle menu"
 					aria-expanded={menuOpen}
 					aria-controls="mobile-menu"
@@ -59,17 +60,17 @@ const Header = () => {
 					{menuOpen ? <X size={24} /> : <Menu size={24} />}
 				</button>
 
-				<div className="hidden sm:flex max-sm:flex-col items-center gap-4">
+				<div className="hidden sm:flex items-center gap-4">
 					{/* NAV LINKS */}
 					<div className="flex gap-2 sm:gap-8">
-						<ul className="flex max-[350px]:gap-4 gap-6 ">
+						<ul className="flex gap-6">
 							{navLinks.map((link) => (
 								<li key={link.id}>
 									<Link
-										className="dark:text-zinc-100 hover:text-teal-700 flex flex-col items-center transition-all duration-150 ease-in-out"
+										className="link flex flex-col items-center"
 										to={link.path}
 									>
-										<p className="text-md">
+										<p className="text-lg">
 											{link.linkName}
 										</p>
 									</Link>
@@ -79,11 +80,12 @@ const Header = () => {
 					</div>
 
 					{/* SOCIAL ICONS */}
-					<div className="flex sm:ml-6 gap-4 [&>a]:hover:text-teal-700 [&>a]:transition-all [&>a]:duration-150 [&>a]:ease-in-out">
+					<div className="flex sm:ml-6 gap-4">
 						<a
 							href="https://www.linkedin.com/in/agoth-arop-9b19203a3/"
 							target="_blank"
 							rel="noopener noreferrer"
+							className="link"
 						>
 							<FaLinkedin size={20} />
 						</a>
@@ -91,6 +93,7 @@ const Header = () => {
 							href="https://github.com/agoth24"
 							target="_blank"
 							rel="noopener noreferrer"
+							className="link"
 						>
 							<FaGithub size={20} />
 						</a>
@@ -101,18 +104,18 @@ const Header = () => {
 			{menuOpen && (
 				<div
 					id="mobile-menu"
-					className="sm:hidden fixed inset-x-0 top-20 max-[350px]:top-30 bottom-0 overflow-y-auto bg-zinc-50 dark:bg-neutral-900 px-6"
+					className="sm:hidden fixed inset-x-0 top-20 bottom-0 overflow-y-auto bg-bg px-6"
 				>
 					<div className="flex h-full flex-col gap-8 py-8">
 						<ul className="flex flex-col gap-6">
 							{navLinks.map((link) => (
 								<li key={link.id}>
 									<Link
-										className="dark:text-zinc-100 hover:text-teal-700 flex flex-col transition-all duration-150 ease-in-out"
+										className="link flex flex-col"
 										to={link.path}
 										onClick={() => setMenuOpen(false)}
 									>
-										<p className="text-md">
+										<p className="text-base">
 											{link.linkName}
 										</p>
 									</Link>
@@ -120,12 +123,13 @@ const Header = () => {
 							))}
 						</ul>
 
-						<div className="flex gap-4 [&>a]:hover:text-teal-700 [&>a]:transition-all [&>a]:duration-150 [&>a]:ease-in-out">
+						<div className="flex gap-4">
 							<a
 								href="https://www.linkedin.com/in/agoth-arop-9b19203a3/"
 								target="_blank"
 								rel="noopener noreferrer"
 								onClick={() => setMenuOpen(false)}
+								className="link"
 							>
 								<FaLinkedin size={20} />
 							</a>
@@ -134,6 +138,7 @@ const Header = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								onClick={() => setMenuOpen(false)}
+								className="link"
 							>
 								<FaGithub size={20} />
 							</a>
