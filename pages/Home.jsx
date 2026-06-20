@@ -18,7 +18,7 @@ const projects = [
 const Home = () => {
 	return (
 		<section className="flex flex-col gap-4 py-12 grow">
-			<div className="flex flex-col font-noto-serif font-light text-md gap-4">
+			<div className="flex flex-col font-noto-serif font-light text-lg gap-4">
 				<p>
 					I'm a{" "}
 					<strong className="text-teal-700 dark:text-teal-500">
