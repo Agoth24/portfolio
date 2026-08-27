@@ -2,7 +2,7 @@ import { getBlogPosts } from 'app/blog/utils'
 
 // TODO: replace with the real deployed URL before shipping.
 // Feeds sitemap.xml, robots.txt, /rss, OG image URLs, and each post's JSON-LD.
-export const baseUrl = 'https://agotharop.com'
+export const baseUrl = 'https://agoth-arop.vercel.app'
 
 export default async function sitemap() {
   let blogs = getBlogPosts().map((post) => ({
