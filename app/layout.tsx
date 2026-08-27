@@ -48,21 +48,18 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={cx(
-        'text-black bg-gray-50 dark:text-white dark:bg-neutral-950',
         GeistSans.variable,
         GeistMono.variable
       )}
     >
       <head>
-        {/* Runs before first paint so the page never flashes the wrong theme.
-            Must stay inline and blocking — a deferred script paints too late. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.classList.add(t)}catch(e){}`,
+            __html: `document.documentElement.classList.add(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')`,
           }}
         />
       </head>
-      <body className="antialiased max-w-xl mx-4 mt-8 mx-auto">
+      <body className="antialiased max-w-xl mt-8 mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
