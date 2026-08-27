@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+/* Drive `dark:` from a class on <html> rather than the OS setting, so the
+   header toggle controls it. No class on <html> = follow the system. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
@@ -15,18 +24,42 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+  --background: #F9FAF8;
+  --foreground: #222222;
 }
 
+/* Dark values appear twice on purpose: once for "system dark, unless the user
+   forced light", once for "user forced dark". CSS cannot share a declaration
+   block between a media query and a class selector. Edit both lists together. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --sh-class: #4c97f8;
     --sh-identifier: white;
     --sh-keyword: #f47067;
     --sh-string: #0fa295;
+    --background: #222222;
+    --foreground: #F9FAF8;
   }
-  html {
+  html:not(.light) {
     color-scheme: dark;
   }
+}
+
+:root.dark {
+    --sh-class: #4c97f8;
+    --sh-identifier: white;
+    --sh-keyword: #f47067;
+    --sh-string: #0fa295;
+    --background: #222222;
+    --foreground: #F9FAF8;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
 }
 
 html {

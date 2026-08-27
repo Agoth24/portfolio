@@ -11,15 +11,15 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Agoth Arop',
+    template: '%s | Agoth Arop',
   },
-  description: 'This is my portfolio.',
+  description: "Agoth Arop's home on the web.",
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Agoth Arop',
+    description: "Agoth Arop's home on the web.",
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Agoth Arop',
     locale: 'en_US',
     type: 'website',
   },
@@ -46,13 +46,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        'text-black bg-gray-50 dark:text-white dark:bg-neutral-950',
         GeistSans.variable,
         GeistMono.variable
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+      <head>
+        {/* Runs before first paint so the page never flashes the wrong theme.
+            Must stay inline and blocking — a deferred script paints too late. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.classList.add(t)}catch(e){}`,
+          }}
+        />
+      </head>
+      <body className="antialiased max-w-xl mx-4 mt-8 mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
