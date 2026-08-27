@@ -9,40 +9,36 @@
   --font-mono: var(--font-geist-mono);
 }
 
-::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
-}
 
 :root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
-  --background: #F9FAF8;
-  --foreground: #222222;
+    --sh-class: #2d5e9d;
+    --sh-identifier: #354150;
+    --sh-sign: #8996a3;
+    --sh-string: #007f7a;
+    --sh-keyword: #e02518;
+    --sh-comment: #a19595;
+    --sh-jsxliterals: #6266d1;
+    --sh-property: #e25a1c;
+    --sh-entity: #e25a1c;
+    --background: #F9FAF8;
+    --foreground: #222222;
 }
 
 /* Dark values appear twice on purpose: once for "system dark, unless the user
-   forced light", once for "user forced dark". CSS cannot share a declaration
-   block between a media query and a class selector. Edit both lists together. */
+forced light", once for "user forced dark". CSS cannot share a declaration
+block between a media query and a class selector. Edit both lists together. */
 @media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-    --background: #222222;
-    --foreground: #F9FAF8;
-  }
-  html:not(.light) {
-    color-scheme: dark;
-  }
+    :root:not(.light) {
+        --sh-class: #4c97f8;
+        --sh-identifier: white;
+        --sh-keyword: #f47067;
+        --sh-string: #0fa295;
+        --background: #222222;
+        --foreground: #F9FAF8;
+    }
+    html:not(.light) {
+        color-scheme: dark;
+    }
 }
 
 :root.dark {
@@ -54,8 +50,13 @@
     --foreground: #F9FAF8;
 }
 
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
 html.dark {
-  color-scheme: dark;
+    color-scheme: dark;
 }
 
 html.light {
